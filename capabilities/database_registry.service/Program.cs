@@ -1,5 +1,7 @@
-﻿using System.Web.Http;
-using Owin;
+﻿using System;
+using System.Net.Http;
+using helpers;
+using Microsoft.Owin.Hosting;
 
 namespace database_registry.service
 {
@@ -7,23 +9,19 @@ namespace database_registry.service
     {
         static void Main(string[] args)
         {
-        }
-    }
-    public class Startup
-    {
-        public void Configuration(IAppBuilder appBuilder)
-        {
-            HttpConfiguration config = new HttpConfiguration();
+            Console.SetWindowSize(80, 20);
+            ConsoleAppHelper.PrintHeader("Header.txt");
 
-            config.MapHttpAttributeRoutes();
+            var baseAddress = "http://localhost:9111/api/registry/";
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            using (WebApp.Start<Startup>(url: baseAddress))
+            {
+                HttpClient client = new HttpClient();
 
-            appBuilder.UseWebApi(config);
+                Console.WriteLine(string.Empty);
+                Console.WriteLine($"The api is live on {baseAddress}");
+                Console.ReadLine();
+            }
         }
     }
 }

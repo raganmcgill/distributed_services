@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="commands\RegisterDatabase.cs" />
     <Compile Include="DatabaseRegistered.cs" />
     <Compile Include="events\SchemaChanged.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
