@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commands\FormatScript.cs" />
+    <Compile Include="commands\Heartbeat.cs" />
     <Compile Include="commands\RegisterDatabase.cs" />
     <Compile Include="DatabaseRegistered.cs" />
     <Compile Include="events\SchemaChanged.cs" />
