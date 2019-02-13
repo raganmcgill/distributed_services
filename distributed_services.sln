@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dashboard.service", "capabi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "database_registry.service", "capabilities\database_registry.service\database_registry.service.csproj", "{4C2A9CF0-7FB0-4C79-AA5B-EBD3446861C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "script_formatting.service", "capabilities\script_formatting.service\script_formatting.service.csproj", "{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{4C2A9CF0-7FB0-4C79-AA5B-EBD3446861C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C2A9CF0-7FB0-4C79-AA5B-EBD3446861C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C2A9CF0-7FB0-4C79-AA5B-EBD3446861C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{34C874C2-057F-4356-86FD-9D2C4BBBA38F} = {6D0862DC-0299-42EC-8DAA-91E76B6B8815}
 		{09CE5844-314C-4F5E-AA01-8FE6DC19957C} = {5E610BDE-0B9F-4CD5-B57A-CAC318D7C2E5}
 		{4C2A9CF0-7FB0-4C79-AA5B-EBD3446861C8} = {312E2B03-746D-4360-B4F3-FC98576FB536}
+		{2B68CC1E-B0EA-4D7B-8DE0-5347016BE362} = {0114BACC-A4F7-405B-8588-577FB9A5D87E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0504F50C-79CB-44ED-82DC-89803CF191B0}
