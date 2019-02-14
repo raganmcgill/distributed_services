@@ -2,27 +2,30 @@
 using System;
 using MassTransit;
 using script_formatting.service.consumers;
+using System.Configuration;
 
 namespace script_formatting.service
 {
     class Program
     {
+        private static readonly string RabbitMqAddress = ConfigurationManager.AppSettings["RabbitHost"];
+        private static readonly string RabbitUsername = ConfigurationManager.AppSettings["RabbitUserName"];
+        private static readonly string RabbitPassword = ConfigurationManager.AppSettings["RabbitPassword"];
+
         static void Main(string[] args)
         {
-            string exchangeName = "Formatting";
-            string queueName = "FormatScript";
 
             ConsoleAppHelper.PrintHeader("Header.txt");
 
             var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
-                var host = sbc.Host(new Uri("rabbitmq://localhost"), h =>
+                var host = sbc.Host(new Uri(RabbitMqAddress), h =>
                 {
-                    h.Username("guest");
-                    h.Password("guest");
+                    h.Username(RabbitUsername);
+                    h.Password(RabbitPassword);
                 });
 
-                sbc.ReceiveEndpoint(host, queueName, ep =>
+                sbc.ReceiveEndpoint(host, "FormatScript", ep =>
                 {
                     //ep.Bind(exchangeName);
                     ep.Consumer(() => new FormatScriptConsumer());

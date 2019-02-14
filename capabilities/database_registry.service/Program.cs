@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using helpers;
 using Microsoft.Owin.Hosting;
@@ -7,6 +8,10 @@ namespace database_registry.service
 {
     class Program
     {
+        private static readonly string RabbitMqAddress = ConfigurationManager.AppSettings["RabbitHost"];
+        private static readonly string RabbitUsername = ConfigurationManager.AppSettings["RabbitUserName"];
+        private static readonly string RabbitPassword = ConfigurationManager.AppSettings["RabbitPassword"];
+
         static void Main(string[] args)
         {
             Console.SetWindowSize(80, 20);

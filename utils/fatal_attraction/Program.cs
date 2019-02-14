@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace fatal_attraction
 {
     class Program
     {
+        private static readonly string RabbitMqAddress = ConfigurationManager.AppSettings["RabbitHost"];
+        private static readonly string RabbitUsername = ConfigurationManager.AppSettings["RabbitUserName"];
+        private static readonly string RabbitPassword = ConfigurationManager.AppSettings["RabbitPassword"];
+
         [DllImport("kernel32.dll", ExactSpelling = true)]
 
         private static extern IntPtr GetConsoleWindow();
@@ -54,18 +59,15 @@ namespace fatal_attraction
 
         public static void Cleanup()
         {
-            var username = "guest";
-            var password = "guest";
-            var host = "localhost";
             var virtualHost = Uri.EscapeDataString("/"); // %2F is the name of the default virtual host
 
             var handler = new HttpClientHandler
             {
-                Credentials = new NetworkCredential(username, password),
+                Credentials = new NetworkCredential(RabbitUsername, RabbitPassword),
             };
             var httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri(string.Format(CultureInfo.InvariantCulture, "http://{0}:15672/", host))
+                BaseAddress = new Uri(string.Format(CultureInfo.InvariantCulture, "http://{0}:15672/", RabbitMqAddress))
             };
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

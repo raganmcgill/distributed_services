@@ -8,8 +8,7 @@ namespace notifications.service
 {
     class Program
     {
-        private static readonly string RabbitMqAddress = "rabbitmq://localhost";
-        //private static readonly string RabbitMqNotificationQueueName = "redgate.notifications";
+        private static readonly string RabbitMqAddress = ConfigurationManager.AppSettings["RabbitHost"];
         private static readonly string RabbitUsername = ConfigurationManager.AppSettings["RabbitUserName"];
         private static readonly string RabbitPassword = ConfigurationManager.AppSettings["RabbitPassword"];
 
@@ -27,8 +26,8 @@ namespace notifications.service
             {
                 var rabbitMqHost = rabbit.Host(new Uri(RabbitMqAddress), settings =>
                 {
-                    settings.Password(RabbitUsername);
-                    settings.Username(RabbitPassword);
+                    settings.Username(RabbitUsername);
+                    settings.Password(RabbitPassword);
                 });
 
                 rabbit.ReceiveEndpoint(rabbitMqHost, "RegistrationNotifications", conf =>

@@ -13,24 +13,6 @@ namespace script_formatting.service.consumers
 {
     internal class FormatScriptConsumer : IConsumer<FormatScript>
     {
-
-        private IBusControl bus;
-
-        //        public FormatScriptConsumer()
-        //        {
-        //            bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
-        //            {
-        //                var host = sbc.Host(new Uri("rabbitmq://localhost"), h =>
-        //                {
-        //                    h.Username("guest");
-        //                    h.Password("guest");
-        //                });
-        //                
-        //            });
-        //
-        //            bus.Start();
-        //        }
-
         public Task Consume(ConsumeContext<FormatScript> context)
         {
             ConsoleAppHelper.PrintHeader("Header.txt");
@@ -52,7 +34,7 @@ namespace script_formatting.service.consumers
                 FormattedScript = formattedSql
             };
 
-            bus.Publish<ScriptFormatted>(message);
+            context.Publish<ScriptFormatted>(message);
 
             Console.WriteLine($"Formatted script complete");
 

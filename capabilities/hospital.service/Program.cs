@@ -21,7 +21,7 @@ namespace hospital.service
             Console.SetWindowSize(50, 30);
             ConsoleAppHelper.PrintHeader("Header.txt");
 
-            var _rabbitBusControl = Bus.Factory.CreateUsingRabbitMq(sbc =>
+            var rabbitBusControl = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
                 var host = sbc.Host(new Uri(RabbitMqAddress), h =>
                 {
@@ -35,7 +35,7 @@ namespace hospital.service
                 });
 
             });
-            _rabbitBusControl.Start();
+            rabbitBusControl.Start();
 
 
             Timer timer = new Timer(2000);
@@ -47,7 +47,7 @@ namespace hospital.service
 
             timer.Stop();
 
-            _rabbitBusControl.Stop();
+            rabbitBusControl.Stop();
         }
 
         static void TimerTick(Object obj, ElapsedEventArgs e)
