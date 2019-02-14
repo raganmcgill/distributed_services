@@ -25,6 +25,9 @@ namespace database_registry.service
 
                 Console.WriteLine(string.Empty);
                 Console.WriteLine($"The api is live on {baseAddress}");
+
+                ConsoleAppHelper.PrintHeader("Payload.txt");
+
                 Console.ReadLine();
             }
         }

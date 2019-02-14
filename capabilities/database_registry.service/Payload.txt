@@ -1,0 +1,8 @@
+﻿Post this payload to the API :
+
+{
+    "Server": "<SERVER_NAME>",
+    "Database": "<DATABASE>",
+    "User": "<USER>",
+    "Password": "<PASSWORD>"
+}
