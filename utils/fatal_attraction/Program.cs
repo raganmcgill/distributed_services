@@ -56,10 +56,10 @@ namespace fatal_attraction
             Console.WriteLine("Finished");
             Console.ReadLine();
         }
-
+        
         public static void Cleanup()
         {
-            var virtualHost = Uri.EscapeDataString("/"); // %2F is the name of the default virtual host
+            var virtualHost = RabbitUsername;//Uri.EscapeDataString("/"); // %2F is the name of the default virtual host
 
             var handler = new HttpClientHandler
             {
@@ -67,7 +67,7 @@ namespace fatal_attraction
             };
             var httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri(string.Format(CultureInfo.InvariantCulture, "http://{0}:15672/", RabbitMqAddress))
+                BaseAddress = new Uri(string.Format(CultureInfo.InvariantCulture, "https://{0}/", RabbitMqAddress))
             };
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -94,7 +94,7 @@ namespace fatal_attraction
         static IEnumerable<Task<HttpResponseMessage>> DeleteExchanges(HttpClient httpClient, string virtualHost)
         {
             // Delete exchanges
-            var exchangeResult = httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, "api/exchanges/{0}", virtualHost)).Result;
+            var exchangeResult = httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, "api/exchanges", virtualHost)).Result;
             exchangeResult.EnsureSuccessStatusCode();
             var allExchanges = JsonConvert.DeserializeObject<List<Exchange>>(exchangeResult.Content.ReadAsStringAsync().Result);
             var exchanges = FilterAllExchangesByExcludingInternalTheDefaultAndAmq(allExchanges);
@@ -112,7 +112,7 @@ namespace fatal_attraction
 
         static IEnumerable<Task<HttpResponseMessage>> DeleteQueues(HttpClient httpClient, string virtualHost)
         {
-            var queueResult = httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, "api/queues/{0}", virtualHost)).Result;
+            var queueResult = httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, "api/queues", virtualHost)).Result;
             queueResult.EnsureSuccessStatusCode();
             var queues = JsonConvert.DeserializeObject<List<Queue>>(queueResult.Content.ReadAsStringAsync().Result);
 
