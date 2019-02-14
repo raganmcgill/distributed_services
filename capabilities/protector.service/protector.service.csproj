@@ -71,6 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="consumers\DatabaseRegisteredConsumer.cs" />
+    <Compile Include="consumers\SchemaChangedConsumer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +89,14 @@
     <ProjectReference Include="..\..\common\helpers\helpers.csproj">
       <Project>{896267D6-5265-4020-83A7-7C3332FDAA29}</Project>
       <Name>helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\messages\messages.csproj">
+      <Project>{E7B46A6E-4EB4-44F0-9AA8-26E0EB1FE16F}</Project>
+      <Name>messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\models\models.csproj">
+      <Project>{34C874C2-057F-4356-86FD-9D2C4BBBA38F}</Project>
+      <Name>models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
