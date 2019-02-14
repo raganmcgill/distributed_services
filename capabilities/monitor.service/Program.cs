@@ -115,7 +115,7 @@ namespace monitor.service
             {
                 foreach (var serverDirectoryInfo in di.GetDirectories())
                 {
-                    var server = new Server() { Name = serverDirectoryInfo.Name };
+                    var server = new Server() { Name = serverDirectoryInfo.Name.Replace(@"|",@"~") };
 
                     foreach (var databaseDirectoryInfo in serverDirectoryInfo.GetDirectories())
                     {

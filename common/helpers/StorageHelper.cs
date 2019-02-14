@@ -7,7 +7,7 @@ public static class StorageHelper
 {
     public static void StoreDatabaseDefinition(ConnectionDetails connectionDetails, List<Table> tables, string name)
     {
-        string path = $@"C:\dev\Stores\{name}\{connectionDetails.Server}\{connectionDetails.Database}";
+        string path = $@"C:\dev\Stores\{name}\{connectionDetails.ServerWithoutSlashes}\{connectionDetails.Database}";
 
         if (Directory.Exists(path))
         {
