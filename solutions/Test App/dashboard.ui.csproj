@@ -50,10 +50,6 @@
       <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="common_models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\common_models.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -159,13 +155,13 @@
     <Compile Include="Controllers\Beat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
-    <Compile Include="Models\Notification.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Server.cs" />
     <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -374,13 +370,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\common\message_types\message_types.csproj">
-      <Project>{A3D8652A-C317-4DDA-A838-C985501CB365}</Project>
-      <Name>message_types</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\messages\messages.csproj">
-      <Project>{E7B46A6E-4EB4-44F0-9AA8-26E0EB1FE16F}</Project>
+      <Project>{e7b46a6e-4eb4-44f0-9aa8-26e0eb1fe16f}</Project>
       <Name>messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\models\models.csproj">
+      <Project>{34c874c2-057f-4356-86fd-9d2c4bbba38f}</Project>
+      <Name>models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
