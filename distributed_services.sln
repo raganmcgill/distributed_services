@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monitor.service", "capabili
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "protector.service", "capabilities\protector.service\protector.service.csproj", "{A818AB0B-9B47-4AE4-B71C-D158897BB307}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dashboard.ui", "solutions\Test App\dashboard.ui.csproj", "{377B3F03-55E3-4D49-93F1-E12107A460BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{A818AB0B-9B47-4AE4-B71C-D158897BB307}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A818AB0B-9B47-4AE4-B71C-D158897BB307}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A818AB0B-9B47-4AE4-B71C-D158897BB307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377B3F03-55E3-4D49-93F1-E12107A460BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377B3F03-55E3-4D49-93F1-E12107A460BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377B3F03-55E3-4D49-93F1-E12107A460BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377B3F03-55E3-4D49-93F1-E12107A460BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +129,7 @@ Global
 		{A79E0BA1-2740-47B7-A69A-B44F794158D9} = {BFF31C6D-B52A-439F-A4CD-F37EAC6EFAB4}
 		{413E11C7-6D4A-4719-9E3D-BB769189574A} = {A79E0BA1-2740-47B7-A69A-B44F794158D9}
 		{A818AB0B-9B47-4AE4-B71C-D158897BB307} = {17DCD1A4-F093-404F-BE0D-1EB01A1EE9B5}
+		{377B3F03-55E3-4D49-93F1-E12107A460BB} = {E7E21DCA-071F-4888-A7BC-A83E8B7FB7F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0504F50C-79CB-44ED-82DC-89803CF191B0}
