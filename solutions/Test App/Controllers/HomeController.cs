@@ -30,7 +30,7 @@ namespace dashboard.ui.Controllers
         public ActionResult GetDatabases()
         {
             var result = new List<Server>();
-            string root = $@"C:\dev\Stores\Dashboard";
+            string root = $@"C:\dev\Stores\monitor";
 
             DirectoryInfo rootInfo = new DirectoryInfo(root);
 

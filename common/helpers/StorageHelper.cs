@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using models;
 using Newtonsoft.Json;
@@ -26,11 +27,11 @@ public static class StorageHelper
 
     private static void StoreConnectionDetails(ConnectionDetails connectionDetails, string path)
     {
-        var filename = "connection.txt";
+        var filename = @"connection.txt";
 
         var serilised = JsonConvert.SerializeObject(connectionDetails);
 
-        WriteFile(path, filename, serilised);
+        WriteFile(Path.Combine(path, "connection_details"), filename, serilised);
     }
 
     private static void StoreTables(List<Table> tables, string subPath)
@@ -48,7 +49,19 @@ public static class StorageHelper
     private static void WriteFile(string path, string filename, string data)
     {
         var fullPath = Path.Combine(path, filename);
+        try
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
 
-        File.WriteAllText(fullPath, data);
+            File.WriteAllText(fullPath, data);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }
