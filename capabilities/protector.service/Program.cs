@@ -37,9 +37,9 @@ namespace protector.service
                 //                    ep.Consumer(() => new DatabaseRegisteredConsumer());
                 //                });
 
-                sbc.ReceiveEndpoint(host, "DatabaseRegistered", ep =>
+                sbc.ReceiveEndpoint(host, "SchemaChanged", ep =>
                 {
-                    ep.Consumer(() => new DatabaseRegisteredConsumer());
+                    ep.Consumer(() => new SchemaChangedConsumer() );
                 });
 
             });

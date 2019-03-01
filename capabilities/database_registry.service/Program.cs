@@ -14,19 +14,22 @@ namespace database_registry.service
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(80, 20);
-            ConsoleAppHelper.PrintHeader("Header.txt");
-
             var baseAddress = "http://localhost:9111/api/registry/";
 
             using (WebApp.Start<Startup>(url: baseAddress))
             {
                 HttpClient client = new HttpClient();
 
+                Console.SetWindowSize(80, 30);
+                ConsoleAppHelper.PrintHeader("Header.txt");
+
                 Console.WriteLine(string.Empty);
+
                 Console.WriteLine($"The api is live on {baseAddress}");
 
-                ConsoleAppHelper.PrintHeader("Payload.txt");
+                Console.WriteLine(string.Empty);
+
+                ConsoleAppHelper.PrintHeader("Payload.txt",false);
 
                 Console.ReadLine();
             }

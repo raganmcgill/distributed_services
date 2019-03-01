@@ -96,7 +96,7 @@ namespace monitor.service
         {
             Console.Clear();
             ConsoleAppHelper.PrintHeader("Header.txt");
-            Console.WriteLine(DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss"));
+            Console.WriteLine($"Last Checked on : {DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss")}");
 
             var storeLocation = $@"C:\dev\Stores\monitor\";
 
@@ -115,7 +115,7 @@ namespace monitor.service
             {
                 foreach (var serverDirectoryInfo in di.GetDirectories())
                 {
-                    var server = new Server() { Name = serverDirectoryInfo.Name.Replace(@"|",@"~") };
+                    var server = new Server() { Name = serverDirectoryInfo.Name.Replace(@"|", @"~") };
 
                     foreach (var databaseDirectoryInfo in serverDirectoryInfo.GetDirectories())
                     {
@@ -123,21 +123,25 @@ namespace monitor.service
 
                         foreach (var fileInfo in databaseDirectoryInfo.GetFiles())
                         {
-                            if (!fileInfo.Name.ToLower().Contains("connection"))
+                            using (StreamReader x = File.OpenText(fileInfo.FullName))
                             {
-                                using (StreamReader x = File.OpenText(fileInfo.FullName))
-                                {
-                                    var moo = (Table)serializer.Deserialize(x, typeof(Table));
+                                var moo = (Table)serializer.Deserialize(x, typeof(Table));
 
-                                    database.Tables.Add(moo);
-                                }
+                                database.Tables.Add(moo);
                             }
-                            else
+                        }
+
+                        foreach (var directoryInfo in databaseDirectoryInfo.GetDirectories())
+                        {
+                            if (directoryInfo.Name.ToLower().Contains("connection"))
                             {
-                                using (StreamReader x = File.OpenText(fileInfo.FullName))
+                                foreach (var fileInfo in directoryInfo.GetFiles())
                                 {
-                                    database.ConnectionDetails =
-                                        (ConnectionDetails)serializer.Deserialize(x, typeof(ConnectionDetails));
+                                    using (StreamReader x = File.OpenText(fileInfo.FullName))
+                                    {
+                                        database.ConnectionDetails =
+                                            (ConnectionDetails)serializer.Deserialize(x, typeof(ConnectionDetails));
+                                    }
                                 }
                             }
                         }

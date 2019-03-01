@@ -9,9 +9,13 @@ namespace helpers
 {
     public static class ConsoleAppHelper
     {
-        public static void PrintHeader(string file)
+        public static void PrintHeader(string file, bool performClear = true)
         {
-            Console.Clear();
+            if (performClear)
+            {
+                Console.Clear();
+            }
+
             Console.ForegroundColor = ConsoleColor.White;
 
             String line;
